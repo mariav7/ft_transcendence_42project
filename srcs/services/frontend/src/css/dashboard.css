@@ -1,0 +1,119 @@
+/* Dashboard styles */
+
+/* Tournament form, list of tournaments and pagination */
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+#redWarning, #greenNotif {
+    display: none;
+    animation: fadeOut 6s ease forwards;
+}
+
+.tournamentMatches .card, #game-stats .list-group-item, .page-link {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #FFFFFC;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.tournamentMatches .card button {
+    background-color: #FF003D;
+    border: #FF003D;
+}
+
+.active > .page-link, .disabled > .page-link{
+    /* background-color: #FFFFFC;
+    color: #FF003D; */
+    background-color: inherit;
+    border : 2px solid rgba(255, 255, 255, 0.5);
+    color: #FFFFFC;
+}
+
+.tournamentMatches .card button:hover, .page-link:hover {
+    background-color: #FFFFFC;
+    color: #FF003D;
+}
+
+.list-group-item button:hover {
+    color: #FFFFFC;
+}
+
+.tournamentMatches button:disabled {
+    background-color: #7a7070;
+    color: #FFFFFC;
+}
+
+/* Dashboard left side buttons */
+.game-action button{
+    width: 80%;
+    background-color: inherit;
+    border : 2px solid rgba(255, 255, 255, 0.5);
+    color: #FFFFFC;
+}
+
+.game-action button:hover{
+    background-color: #FFFFFC;
+    border-color :#615f5f;
+    color: #000000;
+}
+
+#game-stats .card{
+    background-color: rgba(42, 40, 66, 0.8)!important;
+    border: 2px solid rgba(156, 153, 153, 0.5)!important;
+}
+
+#game-stats .card-title {
+    color: #FFFFFC;
+    font-weight: bold;
+}
+
+#loader {
+    border: 12px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 12px solid #444444;
+    width: 70px;
+    height: 70px;
+    animation: spin 1s linear infinite;
+}
+
+.center {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#upcoming {
+    /* opacity : .6; */
+    font-family: monospace;
+    font-size: small;
+    /* background-color : #7000ff; */
+    position:relative;
+    color: #FFFFFC;
+    height: 50vh!important;
+    overflow-y: auto;
+    overflow-x: auto;
+    /* height:200px; */
+}
+
+.card a, .table a {
+    text-decoration: none;
+    color: #39ff7b;
+}
+
+.card a:hover, .table a:hover {
+    color: #39ff7ba9;
+}
+
+.title-winner {
+    color:#FCFF76;
+}

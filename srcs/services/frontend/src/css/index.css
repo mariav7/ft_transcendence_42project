@@ -1,0 +1,173 @@
+* {
+  margin: 0!important;
+  padding: 0!important;
+  color: #FFFFFC;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0)!important;
+  overflow: hidden;
+}
+
+#background {
+  height: 100vh!important;
+  width: 100%!important;
+  /* position: relative; */
+}
+
+#tunnel-container {
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  height: 100vh!important;
+}
+
+#app {
+  color :#FFFFFC;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  animation: popAnimation 0.9s ease forwards;
+  transform-origin: center;
+}
+
+  @keyframes popAnimation {
+    0% {
+      transform: scale(0.95);
+    }
+    50% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+#dropdown-menu{
+  background-color: aquamarine;
+}
+
+#nav-bar{
+  justify-content: space-around;
+  background-color: black;
+}
+
+#nav-bar a{
+  text-decoration: none;
+}
+
+#nav-bar .navbar-link:hover{
+  color: rgb(214, 210, 210);
+  text-decoration: underline;
+}
+
+#nav-bar .navbar-link{
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+#alert{
+  opacity : .8;
+  padding: 3px;
+  background-color : #7000ff;
+  color:#ffffff;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #524e4e;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  ::-webkit-scrollbar-button:start:decrement {
+    width: 10px;
+    height: 5px;
+    opacity : .8;
+    background-color: #ccc;
+  }
+  
+  ::-webkit-scrollbar-button:end:increment {
+    width: 10px;
+    height: 5px;
+    opacity : .8;
+    background-color: #ccc;
+  }
+
+#welcome{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: justify;
+    font-size: smaller;
+}
+:root {
+    --x: -8px;
+    --y: -8px;
+  }
+  
+/* .welcometitle{
+    text-align: center;
+    margin-top: -100px!important;
+    font-size: 20vh;
+    font-weight:bolder;
+    font-style: italic;
+    color:#000000;
+    -webkit-text-stroke-width: 1px!important;
+    -webkit-text-stroke-color: rgb(255, 255, 255)!important;
+    text-shadow:
+        calc(var(--x) * -1) calc(var(--y) * -1) 0px #39ff7b,
+        calc(var(--x) * -2) calc(var(--y) * -2) 0px #66a009,
+        calc(var(--x) * -3) calc(var(--y) * -3) 0px #0e7931;
+} */
+
+.welcometitle {
+    text-align: center;
+    margin-top: -100px!important;
+    font-size: 20vw;
+    font-weight: bolder;
+    font-style: italic;
+    color: #000000;
+    -webkit-text-stroke-width: 1.5px!important;
+    -webkit-text-stroke-color: rgb(255, 255, 255)!important;
+    transition: text-shadow 0.1s ease; /* Smooth transition for text-shadow */
+}
+
+@keyframes shadowFadeIn {
+    from {
+        /* Original text shadows with transparent layers */
+        text-shadow:
+            -1px -1px 0 black,
+            1px -1px 0 black,
+            -1px 1px 0 black,
+            1px 1px 0 black,
+            calc(var(--x) * -1) calc(var(--y) * -1) 0px transparent,
+            calc(var(--x) * -2) calc(var(--y) * -2) 0px transparent,
+            calc(var(--x) * -3) calc(var(--y) * -3) 0px transparent;
+    }
+    to {
+        /* New text shadows with desired font sizes and colors */
+        text-shadow:
+        
+            calc(var(--x) * -1) calc(var(--y) * -1) 0px rgb(121, 250, 109) , 
+            /* calc(var(--x) * -0.9) calc(var(--y) * -0.9) 0px rgb(238, 255, 0) ,  */
+            /* calc(var(--x) * -1.1) calc(var(--y) * -1.1) 0px rgb(238, 255, 0) ,  */
+           
+            calc(var(--x) * -2) calc(var(--y) * -2) 0px rgb(62, 179, 62) , 
+            /* calc(var(--x) * -1.9) calc(var(--y) * -1.9) 0px rgb(96, 59, 165) ,  */
+            /* calc(var(--x) * -2.1) calc(var(--y) * -2.1) 0px rgb(119, 21, 175) ,  */
+            
+            calc(var(--x) * -3) calc(var(--y) * -3) 0px rgb(30, 153, 13);
+            /* calc(var(--x) * -2.9) calc(var(--y) * -2.9) 0px rgb(102, 255, 0) ,  */
+            /* calc(var(--x) * -3.1) calc(var(--y) * -3.1) 0px rgb(102, 255, 0) ;  */
+        }
+}
+
+
+.welcometitle:hover {
+    animation: shadowFadeIn 0.5s forwards; /* Start the animation on hover */
+}

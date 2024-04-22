@@ -1,0 +1,144 @@
+img#pic.avatar {
+    display: block;
+    max-width:100px !important;
+    max-height:100px !important;
+    width: auto;
+    height: auto;
+	border-radius: 50%;
+}
+
+.p-title {
+    writing-mode: vertical-lr; /* Rotate the text vertically from left to right */
+    transform: rotate(180deg); /* Additional rotation to make it display bottom to top */
+    float: right; /* Center the text horizontally */
+    /* white-space: nowrap; Prevent line breaks */
+    cursor:cell;
+    color : #FFFFFC;
+    /* font-style: italic; Make the text italic */
+    /* font-size: 3rem; Adjust the font size as needed */
+}
+
+.friend-body {
+    opacity : .6;
+    background-color : #7000ff;
+    color: #FFFFFC;
+    height: auto !important;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.friendvatar {
+    display: block!important;
+    max-width:40px !important;
+    max-height:40px !important;
+    margin-right : 7px;
+    width: auto;
+    height: auto;
+	  border-radius: 50%;
+}
+
+a{
+    text-decoration: none;
+    color: #FCFF76;
+}
+
+#match_log .log-content{
+    font-family: monospace;
+    font-size: x-small;
+    text-align: left;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 200px;
+    /* color:#FCFF76!important; */
+}
+
+.progress-bar-win{
+    background-color: #7000ff;
+}
+
+
+
+#email{
+    opacity : .6;
+    color:#FFFFFC;
+
+}
+
+#winwin{
+    font-size:smaller;
+    opacity : .6;
+    color:#FFFFFC;
+}
+
+.circular-progress {
+    --size: 250px;
+    --half-size: calc(var(--size) / 2);
+    --stroke-width: 3px;
+    --radius: calc((var(--size) - var(--stroke-width)) / 2);
+    --circumference: calc(var(--radius) * pi * 2);
+    --dash: calc((var(--progress) * var(--circumference)) / 100);
+    animation: progress-animation 0.5s linear 0s 1 forwards;
+  }
+  
+  .circular-progress circle {
+    cx: var(--half-size);
+    cy: var(--half-size);
+    r: var(--radius);
+    stroke-width: var(--stroke-width);
+    fill: none;
+    stroke-linecap: round;
+  }
+  
+  .circular-progress circle.bg {
+    stroke: #000000;
+  }
+  
+  .circular-progress circle.fg {
+    transform: rotate(-90deg);
+    transform-origin: var(--half-size) var(--half-size);
+    stroke-dasharray: var(--dash) calc(var(--circumference) - var(--dash));
+    transition: stroke-dasharray 0.3s linear 0s;
+    stroke: #dad72a;
+  }
+  
+  @property --progress {
+    syntax: "<number>";
+    inherits: false;
+    initial-value: 0;
+  }
+  
+  @keyframes progress-animation {
+    from {
+      --progress: 0;
+    }
+    to {
+      --progress: 100;
+    }
+  }
+
+#progress-text{
+    color:#FFFFFC!important;
+    align-items: center;
+    alignment-baseline: central;
+}
+
+#username{
+    max-width: 100%; /* Ensure text doesn't overflow container */
+    font-size: 1.5rem; /* Set a default font size */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden;    /* Hide overflowed text */
+    text-overflow: ellipsis; /* Display ellipsis (...) when text overflows */
+
+
+}
+
+#bio{
+    /* overflow-x: auto; */
+    overflow-x: hidden;
+}
+
+.progress-text {
+    white-space: normal;
+    line-height: 0.6;
+    /* font-size: 0.6rem; */
+}

@@ -1,0 +1,50 @@
+
+services:
+  db:
+    container_name : postgres
+    image: postgres
+    restart: unless-stopped
+    env_file : .env
+  backend:
+    container_name : backend
+    image: backend:trs
+    build : ./srcs/services/backend/
+    volumes :
+      - media:/code/src/trs/media/
+      # Name volume for SSL certificate
+      - ssl_certs:/etc/ssl/private
+    restart: unless-stopped
+    env_file : .env
+    ports:
+      - "${BACKEND_PORT}:${BACKEND_PORT}"
+    depends_on:
+      - db
+  frontend:
+    container_name : frontend
+    image: frontend:trs
+    build : ./srcs/services/frontend/
+    volumes:
+      # Name volume containing the same SSL
+      - media:/app/src/media/
+      - ssl_certs:/etc/ssl/private
+    restart: unless-stopped
+    env_file : .env
+    ports:
+      - "${FRONTEND_PORT}:${FRONTEND_PORT}"
+    depends_on:
+      - db
+  redis:
+    container_name: redis
+    image: "redis:alpine"
+    ports:
+      - "7474:6379"
+    restart: unless-stopped
+
+networks:
+  trs:
+    name : trs
+    driver: bridge
+
+volumes:
+  ssl_certs:
+  media:
