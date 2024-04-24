@@ -70,7 +70,7 @@ cd ft_transcendence_42project
 > [!WARNING]  
 > You must create a .env file at the root of the project
 
-**Example of a .env file:**
+**Example of an .env file:**
 ```
 DEBUG=True
 SECRET_KEY=S*CR*T
