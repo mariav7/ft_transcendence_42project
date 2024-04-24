@@ -1,0 +1,90 @@
+.chat-title {
+    writing-mode: vertical-lr; /* Rotate the text vertically from left to right */
+    transform: rotate(180deg); /* Additional rotation to make it display bottom to top */
+    float: right; /* Center the text horizontally */
+    white-space: nowrap; /* Prevent line breaks */
+    color : #FFFFFC;
+    /* font-style: italic; Make the text italic */
+    /* font-size: 3rem; Adjust the font size as needed */
+}
+
+#chat-message-input{
+    background-color: rgba(160, 132, 182, 0.589);
+    border-radius: 5px;
+    padding : 3;
+    border:0px;
+}
+#chat-message-input:focus {
+    outline: none!important;
+    box-shadow: none!important;
+    border-color: transparent!important;
+}
+
+a, a > i{
+    text-decoration: none;
+    color: #FCFF76;
+}
+
+.chatvatar {
+    display: block!important;
+    max-width:50px !important;
+    max-height:50px !important;
+    margin-right : 6px;
+    width: auto;
+    height: auto;
+	  border-radius: 50%;
+}
+
+.chatHead {
+    color :#a676ff;
+}
+
+.chatLog {
+    /* overflow-y: auto; */
+    overflow-x: auto!important;
+    height:200px;
+    white-space: nowrap;
+    /* max-width: 100%; */
+    /* width : 90%; */
+    /* margin-left : 10px; */
+    /* margin-right : 10px */
+    /* border:1px solid #FFFFFC; */
+    padding:5px;
+    margin-bottom:10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    overflow-wrap: break-word;
+
+}
+
+.friend-row {
+    /* background-color: rgba(255, 255, 252, 0.4); */
+    border-radius:5%;
+    margin-bottom: 10px;
+}
+
+.time {
+    font-size: 0.8vw;
+}
+
+@media (max-width: 768px) {
+    .time {
+        font-size: 10px;
+    }
+}
+
+.conchasuwrawra{
+    /* padding: 6px 10px!important; */
+    text-wrap: wrap!important;
+    color: #383434;
+    /* background-color: #FFFFFC; */
+}
+
+.custom-text-color {
+    color: #383434; /* Specify your desired text color */
+}
+
+.chatFooter, .blockUser{
+    /* background-color: #e884f1; */
+    text-align: right;
+
+}

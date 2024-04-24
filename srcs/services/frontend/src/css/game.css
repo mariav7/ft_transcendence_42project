@@ -1,0 +1,220 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app-container {
+  /* position: relative; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* background-color: #7000ff; */
+  /* align-items: flex-start; */
+}
+
+.game-header{
+  font-size: 3vw;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* background-color: #ff003d; */
+}
+
+#seconds, #countdown, .message-before-local-match {
+  /* background-color: aqua; */
+  font-size: 10rem;
+  text-align: center;
+  color : white
+}
+
+.user-info {
+    font-size: 3vw;
+  /* margin: 5px; */
+  padding: 5px;
+  max-width: auto;
+  /* background-color: royalblue; */
+}
+
+.timer {
+  /* background-color: coral; */
+  margin: 5px;
+  padding: 5px;
+}
+
+.timer-prolongation {
+  border: 2px solid #7000ff;
+  border-radius: 0.5rem;
+}
+
+#board-game {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  /* background-color: cadetblue; */
+}
+
+#confirm-match {
+  margin: auto;
+  background-color: #ff003d;
+}
+
+/* .top-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.center {
+  position: relative;
+  margin: auto;
+} */
+
+
+/* .board {
+  height: 85vh; 
+  width: 80vw;
+  border: 2px solid #7000ff;
+  box-sizing: border-box;
+} */
+
+.user-paddle {
+  position: absolute;
+  background-color: #7000ff;
+  border-radius: 3%;
+}
+
+
+#ball {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.ball_effect {
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  animation: spinBall 0.1s linear infinite;
+  box-shadow: inset 0 0 18px #fffffc,
+      inset 6px 0 18px #7000ff,
+      inset -6px 0 18px #ff003d,
+      inset 6px 0 30px #7000ff,
+      inset -6px 0 30px #ff003d,
+      0 0 18px #fffffc, -4px 0 18px
+      #7000ff, 4px 0 18px #fffffc;
+}
+
+@keyframes colorChange {
+  0% { color: #7000ff; }
+  50% { color: red; }
+  100% { color: #7000ff; }
+}
+
+.color-changing {
+  animation: colorChange 0.5s infinite;
+}
+
+
+@keyframes spinBall {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.paddle_1 {
+  top: calc(7.5vh + 55px);
+  left: calc(10vw + 30px);
+}
+
+.paddle_2 {
+  top: calc(85vh + 7.5vh - 100px - 55px);
+  right: calc(10vw + 30px);
+}
+  
+.dotted-line {
+  position: relative;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background-color: #fffffc;
+  border: dashed 2px #fffffc;
+}
+
+.player_1_score,
+.player_2_score {
+  color: #fcff76;
+  font-weight: bold;
+}
+
+.message {
+  color: #fffffc;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.win-message {
+  position: absolute;
+  top: calc(50%);
+  left: calc(50%);
+  transform: translate(-50%, -50%);
+  background-color: #ff003d;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: none;
+}
+
+.win-message h1 {
+  margin: 0;
+  color: #fffffc;
+  font-weight: 500;
+}
+
+.controls-info {
+
+    padding: 2px 3px!important;
+    font-size:small;
+    border: solid 1px;
+    border-radius: 20%;
+}
+
+.wrapper {
+    text-align: center;
+    h1 {
+        color: #fff;
+        font-size: 40px;
+        text-transform: uppercase;
+        font-weight: 350;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        background-image: linear-gradient(to right,#000000 10%, #000000 40%, #7000ff 10%, #dfd262 60%);
+        background-size: auto auto;
+        background-clip: border-box;
+        background-size: 200% auto;
+        background-clip: text;
+        /* text-fill-color: transparent; */
+        /* -webkit-text-stroke-width: 1.5px!important; */
+        /* -webkit-text-stroke-color: rgb(255, 255, 255)!important; */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: textclip 2.2s linear infinite;
+        display: inline-block;
+    }
+}
+  
+  @keyframes textclip {
+    to {
+      background-position: 200% center;
+    }
+  }
