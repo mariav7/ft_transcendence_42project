@@ -2,31 +2,20 @@ import { BaseClass } from './BaseClass'
 import { router } from './Router'
 import { initGameTwoD, drawGameElements } from './GameElement';
 
-
 export class Match extends BaseClass {
     constructor(id) {
         super();
-        /*Url*/
-        /*Id of the match*/
         this.id = id;
-        /*Socket*/
         this.socket = null;
-
-        /*Getting token*/
         this.token = localStorage.getItem('token');
-
-        /*Game users*/
         this.total_game_user = 0
         this.game_user_1 = {}
         this.game_user_2 = {}
-
         this.addDocumentClickListener();
-        // this.insertCssLink();
         this.initWebSocket();
     }
 
     initWebSocket() {
-        // new WebSocket(`ws://localhost:8000/ws/chat/${targetId}/?token=${this.token}`);
         const wsProtocol = process.env.PROTOCOL === 'https' ? 'wss:' : 'ws:';
         const wsUrl = `${wsProtocol}//${this.host}:${this.backendPort}/ws/pong/match/${this.id}/?token=${this.token}&connection=player`;
     
@@ -84,7 +73,6 @@ export class Match extends BaseClass {
         };
     }
 
-    /*Methods for match handshake*/
     async ws_handshake(ws_handshake_message, data)
     {
         switch(ws_handshake_message)
@@ -116,7 +104,6 @@ export class Match extends BaseClass {
         }
     }
 
-    /*Methods to update the game state*/
     updateGameState(game_state_data)
     {
         const game_state = JSON.parse(game_state_data);
@@ -140,9 +127,7 @@ export class Match extends BaseClass {
                 drawGameElements(game_state);
                 break;
             case 'match_completed':
-                // this.socket.send(JSON.stringify({'type_message' : 'match_completed'}));
                 this.displayWinner(game_state.winner, game_state.loser);
-                // this.showMessageAndRedirect(`Match finished<br>Winner: ${game_state.winner}<br>Loser: ${game_state.loser}`);
                 break;
             case 'disconnection':
                 this.showMessageAndRedirect(`We are so sorry! Your opponent left the game...<br>Match finished<br>Winner: ${game_state.winner}<br>Loser: ${game_state.loser}`);
@@ -152,7 +137,6 @@ export class Match extends BaseClass {
         }
     }
 
-    /*Update the game elements */
     updateGameElement(game_element_data)
     {
         const game_element = JSON.parse(game_element_data);
@@ -168,7 +152,6 @@ export class Match extends BaseClass {
         }
     }
 
-    /*Method to get the HTML of the dashboard*/
     getHtmlForMain() {
         return ``;
     }
@@ -243,7 +226,6 @@ export class Match extends BaseClass {
     {
         // //console.log(`initGame call()`);
         this.initBoard(user_1_info, user_2_info);
-        // this.showTimerBeforeMatch();
     }
 
     initBoard(user_1_info, user_2_info)
@@ -252,13 +234,10 @@ export class Match extends BaseClass {
 
         const appContainer = document.createElement('div');
 
-        /*Adding 'app-container' class to app div*/
         appContainer.classList.add('app-container');
-        /*Creating game header container for show user names and timer*/
         const game_header = document.createElement('header');
         game_header.classList.add('game-header');
         
-        /*Creating user names div*/
         const user1Div = document.createElement('div');
         user1Div.classList.add('user-info');
         user1Div.innerHTML = `
@@ -268,7 +247,6 @@ export class Match extends BaseClass {
         user2Div.classList.add('user-info');
         user2Div.innerHTML = `<span><span class="controls-info">W</span><span class="controls-info">S</span></span> ${user_2_info.username} `;
 
-        /*Creating timer*/
         const timerElement = document.createElement('div');
         timerElement.id = 'timer';
         timerElement.classList.add('timer');
@@ -285,20 +263,15 @@ export class Match extends BaseClass {
         score_2.innerHTML = `0`;
 
 
-        // Adding childs of game header
         game_header.appendChild(user1Div);
         game_header.appendChild(score_1);
         game_header.appendChild(timerElement);
         game_header.appendChild(score_2);
         game_header.appendChild(user2Div);
-        /*Addind header to appContainer */
         appContainer.appendChild(game_header);
 
-        /*Creating board game, parent of ball and paddles*/
         const board_game = document.createElement('div');
         board_game.setAttribute('id', 'board-game');
-
-        /*Waiting for the other user*/
 
         const waiting_message = document.createElement('div');
         waiting_message.setAttribute('id', 'waiting-message');
@@ -307,11 +280,8 @@ export class Match extends BaseClass {
 
         board_game.appendChild(waiting_message);
 
-        /*Adding board game to app div */
         appContainer.appendChild(board_game);
         
-        /*Adding all the app container*/
-        // app.appendChild(appContainer);
         app.innerHTML = appContainer.innerHTML;
     }
 

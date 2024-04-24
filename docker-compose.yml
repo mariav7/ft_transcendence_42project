@@ -11,7 +11,6 @@ services:
     build : ./srcs/services/backend/
     volumes :
       - media:/code/src/trs/media/
-      # Name volume for SSL certificate
       - ssl_certs:/etc/ssl/private
     restart: unless-stopped
     env_file : .env
@@ -24,7 +23,6 @@ services:
     image: frontend:trs
     build : ./srcs/services/frontend/
     volumes:
-      # Name volume containing the same SSL
       - media:/app/src/media/
       - ssl_certs:/etc/ssl/private
     restart: unless-stopped

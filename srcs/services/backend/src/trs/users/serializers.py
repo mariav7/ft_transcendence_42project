@@ -1,16 +1,13 @@
 from rest_framework import serializers
 from .models import User, Friendship
-from rest_framework.permissions import AllowAny
 from django.utils.html import escape
 import os
 
-# A user serializer will translate python data to JSON data and vice versa
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('username', 'password', 'email', 'id', 'bio', 'profile_pic', 'otp_enabled', 'otp_verified', 'qr_code')
         extra_kwargs = {'password': {'write_only': True}}
-    # method to create a new row in the database
     def validate_username(self, value):
         """
         Validate username to ensure it meets specified criteria.

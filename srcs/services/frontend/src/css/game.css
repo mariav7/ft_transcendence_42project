@@ -5,14 +5,11 @@
 }
 
 .app-container {
-  /* position: relative; */
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  /* background-color: #7000ff; */
-  /* align-items: flex-start; */
 }
 
 .game-header{
@@ -22,26 +19,21 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* background-color: #ff003d; */
 }
 
 #seconds, #countdown, .message-before-local-match {
-  /* background-color: aqua; */
   font-size: 10rem;
   text-align: center;
   color : white
 }
 
 .user-info {
-    font-size: 3vw;
-  /* margin: 5px; */
+  font-size: 3vw;
   padding: 5px;
   max-width: auto;
-  /* background-color: royalblue; */
 }
 
 .timer {
-  /* background-color: coral; */
   margin: 5px;
   padding: 5px;
 }
@@ -55,7 +47,6 @@
   position: relative;
   width: 100%;
   height: 50vh;
-  /* background-color: cadetblue; */
 }
 
 #confirm-match {
@@ -63,37 +54,11 @@
   background-color: #ff003d;
 }
 
-/* .top-left {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.top-right {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-.center {
-  position: relative;
-  margin: auto;
-} */
-
-
-/* .board {
-  height: 85vh; 
-  width: 80vw;
-  border: 2px solid #7000ff;
-  box-sizing: border-box;
-} */
-
 .user-paddle {
   position: absolute;
   background-color: #7000ff;
   border-radius: 3%;
 }
-
 
 #ball {
   position: absolute;
@@ -123,7 +88,6 @@
 .color-changing {
   animation: colorChange 0.5s infinite;
 }
-
 
 @keyframes spinBall {
   100% {
@@ -183,38 +147,34 @@
 }
 
 .controls-info {
-
-    padding: 2px 3px!important;
-    font-size:small;
-    border: solid 1px;
-    border-radius: 20%;
+  padding: 2px 3px!important;
+  font-size:small;
+  border: solid 1px;
+  border-radius: 20%;
 }
 
 .wrapper {
-    text-align: center;
-    h1 {
-        color: #fff;
-        font-size: 40px;
-        text-transform: uppercase;
-        font-weight: 350;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        background-image: linear-gradient(to right,#000000 10%, #000000 40%, #7000ff 10%, #dfd262 60%);
-        background-size: auto auto;
-        background-clip: border-box;
-        background-size: 200% auto;
-        background-clip: text;
-        /* text-fill-color: transparent; */
-        /* -webkit-text-stroke-width: 1.5px!important; */
-        /* -webkit-text-stroke-color: rgb(255, 255, 255)!important; */
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: textclip 2.2s linear infinite;
-        display: inline-block;
-    }
-}
-  
-  @keyframes textclip {
-    to {
-      background-position: 200% center;
-    }
+  text-align: center;
+  h1 {
+    color: #fff;
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: 350;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-image: linear-gradient(to right,#000000 10%, #000000 40%, #7000ff 10%, #dfd262 60%);
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 2.2s linear infinite;
+    display: inline-block;
   }
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}

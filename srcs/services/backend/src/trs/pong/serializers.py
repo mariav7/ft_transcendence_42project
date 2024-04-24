@@ -44,7 +44,6 @@ class TournamentSerializer(serializers.ModelSerializer):
         new_tournament_created = Tournament.objects.create(**validated_data)
         return new_tournament_created
 
-    # Apply HTML escaping if rendering data directly in HTML templates
     def to_representation(self, instance):
         data = super().to_representation(instance)
         data['name'] = escape(data['name'])

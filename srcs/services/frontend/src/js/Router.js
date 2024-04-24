@@ -129,28 +129,11 @@ export const connectUser = async () => {
     }
 }
 
-// '/tournament/:id/match/:id' : {
-//     path : '/tournament',
-//     view :Tournament,
-//     auth : true
-// }
-
-// Use the history API to prevent full page reload
 export const navigateTo = (url) => {
     //console.log(`navigateTo called ${url}`);
-    // event.preventDefault();
     history.pushState(null, null, url);
     router();
 };
-
-/* Explanation of the modified regular expression:
-( ^ ) -> Match the start of the string.
-( ${key.replace(/:[^\s/]+/g, '\\d+').replace(/\//g, '\\/')} ) -> This part constructs the regular expression.
-    ( key.replace(/:[^\s/]+/g, '\\d+') ) -> This replaces any dynamic parameters (:id) with \\d+, which means "one or more digits". This ensures that only numerical values are accepted after the slash (/).
-    ( replace(/\//g, '\\/') ) ->  This escapes any forward slashes (/) in the key to ensure they are treated as literal characters in the regular expression.
-( \\/?$ ) -> Match an optional trailing slash at the end of the string.
-( $ ) -> Match the end of the string.
-*/
 
 function findMatchingRoute(url) {
     for (const key in routes) {
@@ -286,19 +269,11 @@ async function checkAuthentication() {
     }
 }
 
-// Removes token when browser closes without doing logout
-// window.addEventListener('beforeunload', function(event) {
-//     //console.log("beforeunload happening => removing token from localStorage");
-//     localStorage.removeItem('token');
-// });
-
-
 let navbar = new Navbar();
 
 document.addEventListener('DOMContentLoaded', () => {
     //console.log("DOM content loaded (Router.js)");
     router();
-    // document.getElementById('nav-bar').innerHTML = navbar.getHtml();
     document.getElementById("bellButton").addEventListener("click", function() {
         var bellCountSpan = document.getElementById("bellCount");
         bellCountSpan.textContent = "";
@@ -311,8 +286,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }); 
 });
-
-// document.getElementById("bellButton").addEventListener("click", function() {
-// var bellCountSpan = document.getElementById("bellCount");
-// bellCountSpan.textContent = "";
-// });

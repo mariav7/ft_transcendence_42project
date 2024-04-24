@@ -3,9 +3,6 @@ import jwt_decode from 'jwt-decode';
 import { router, navigateTo } from './Router';
 
 export class Tournament extends BaseClass {
-    // constructor() {
-    //     super();
-    // }
 
     constructor(dashboardInstance) {
         super();
@@ -30,7 +27,6 @@ export class Tournament extends BaseClass {
                 body: JSON.stringify(requestBody),
             });
         } catch (error) {
-            // Handle error here
             console.error('Error notifying match:', error);
         }
     }
@@ -56,8 +52,6 @@ export class Tournament extends BaseClass {
                 throw new Error('Unauthorized');
             }
             const data = await response.json();
-            //console.log("THIS IS THE MATCH DATA", data);
-            //console.log('SENDING THIS TO NOTIFYGANE', data.user_1, data.user_2);
             return data;
         } catch (error) {
             console.error('Error:', error);
@@ -106,7 +100,6 @@ export class Tournament extends BaseClass {
     }
 
     async createTournament(tournamentName) {
-        // document.getElementById('app').innerHTML = await this.getWaitingForGameHtml();
         const url = `${this.httpProtocol}://${this.host}:${this.backendPort}/pong/create_tournament/`;
 
         const jwtAccess = localStorage.getItem('token');
@@ -283,7 +276,6 @@ export class Tournament extends BaseClass {
             joinButton.textContent = 'Join';
             joinButton.disabled = false;
         } finally {
-            // spinner.style.display = 'none';
             joinButton.textContent = 'Joined';
             joinButton.disabled =true;
         }
@@ -572,10 +564,4 @@ export class Tournament extends BaseClass {
         parentElement.appendChild(item);
     }
 
-    async getWaitingForGameHtml()
-    {
-        return `<div class="spinner-border" style="color: #fff; width: 3rem; height: 3rem;" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>`
-    }
 }

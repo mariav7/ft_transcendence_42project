@@ -55,7 +55,6 @@ class UpdateProfileView(generics.UpdateAPIView):
     serializer_class = UpdateUserSerializer
     parser_classes = [JSONParser, MultiPartParser, FormParser]
     def perform_update(self, serializer):
-        # Associate the updated image with the user
         profile_pic = self.request.data.get('profile_pic')
         if profile_pic:
             serializer.instance.profile_pic = profile_pic
@@ -72,7 +71,7 @@ class FriendshipView(APIView):
         user = get_object_or_404(User, username=username)
         usernombre = user.username
         friendships = self.get_queryset(username=user.username)
-        serializer = FriendUsernameSerializer(friendships, many=True)  # Use many=True since it's a queryset
+        serializer = FriendUsernameSerializer(friendships, many=True)
 
         modified_data = []
         for entry in serializer.data:
@@ -122,7 +121,6 @@ class UserProfileView(RetrieveAPIView):
             return Response(status=status.HTTP_404_NOT_FOUND)
         
 class CheckAuthentication(APIView):
-    # authentication_classes = [JWTAuthentication]
     permission_classes = (IsAuthenticated,)
 
     def get(self, request):
@@ -141,17 +139,13 @@ class CustomTokenObtainPairView(TokenObtainPairView):
 
             if user:
                 if user.check_password(password):
-                    # Check if the user has 2FA enabled
                     if user.otp_secret_key:
-                        # Verify OTP
                         if self.verify_otp(user.otp_secret_key, otp):
-                            # Generate JWT token
                             tokens = super().post(request, *args, **kwargs).data
                             return Response(tokens, status=status.HTTP_200_OK)
                         else:
                             return Response({"detail": "Invalid OTP"}, status=status.HTTP_400_BAD_REQUEST)
                     else:
-                        # No 2FA enabled, proceed with JWT token generation
                         tokens = super().post(request, *args, **kwargs).data
                         return Response(tokens, status=status.HTTP_200_OK)
                 else:
@@ -174,7 +168,6 @@ class OtpUserView(APIView):
             totp = pyotp.TOTP(secret_key)
             provisioning_uri = totp.provisioning_uri(user.email, issuer_name="PONG")
 
-            # Customize QR code appearance
             qr = qrcode.QRCode(
                 version=1,
                 error_correction=qrcode.constants.ERROR_CORRECT_M,
@@ -197,7 +190,7 @@ class VerifyOtpView(APIView):
 
     def post(self, request, *args, **kwargs):
         user = request.user
-        otp_entered = escape(request.data.get('otp'))  # Input sanitization
+        otp_entered = escape(request.data.get('otp'))
         otp_entered = request.data.get('otp')
         secret_key = user.otp_key
         totp = pyotp.TOTP(secret_key)

@@ -343,64 +343,53 @@ export class LoadProfile extends BaseClass
         const tournData = await this.getTournData(profileData);
         let twins = this.getCurrentWeekWins(tournData);3
         return `<div class="container text-center">
-        <div class="row align-items-center">
-            <div class="col" id="leftCol">
-                <div class="row justify-content-center" id="username" >
-                    <h1>${profileData.username}</h1>
-                </div>
-                <div class="btn-group dropstart">
-                    <img src="${picPath}" id="pic" class="avatar img-fluid" alt="Profile Image">
-                    <span class="" id="status">
-                    </span>
-                </div>
-
-                <div class="row justify-content-center" id="nb">${profileData.id}</div>
-                <div class="row justify-content-center" id="email">${profileData.email}</div>
-                <div class="row justify-content-center" id="bio">${profileData.bio}</div>
-                <div  id="friendRequest"></div> 
-            </div>
-
-            <div class="col" id="right-col">
-                <div class="row" id="wins_losses">
-                    <div class="col-1 p-3 mb-3 p-title" id="stats_title">
-                        Stats
-                    </div>
-                    <div class="col p-3"  id="stat_content">
-                        <h6> Matches </h6>
-                        <div class="progress bg-dark mb-3" role="progressbar" aria-label="Danger example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-                            <div class="progress-bar-win" style="width: ${wins}%">
-                                <span class="progress-text">${wins}% winner</span>
+                    <div class="row align-items-center">
+                        <div class="col" id="leftCol">
+                            <div class="row justify-content-center" id="username" >
+                                <h1>${profileData.username}</h1>
                             </div>
-                            <div class="progress-bar bg-danger" style="width: ${losses}%">
-                                <span class="progress-text">${losses}% loser</span>
+                            <div class="btn-group dropstart">
+                                <img src="${picPath}" id="pic" class="avatar img-fluid" alt="Profile Image">
+                                <span class="" id="status"></span>
+                            </div>
+
+                            <div class="row justify-content-center" id="nb">${profileData.id}</div>
+                            <div class="row justify-content-center" id="email">${profileData.email}</div>
+                            <div class="row justify-content-center" id="bio">${profileData.bio}</div>
+                            <div  id="friendRequest"></div> 
+                        </div>
+
+                        <div class="col" id="right-col">
+                            <div class="row" id="wins_losses">
+                                <div class="col-1 p-3 mb-3 p-title" id="stats_title">Stats</div>
+                                <div class="col p-3"  id="stat_content">
+                                    <h6> Matches </h6>
+                                    <div class="progress bg-dark mb-3" role="progressbar" aria-label="Danger example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                        <div class="progress-bar-win" style="width: ${wins}%">
+                                            <span class="progress-text">${wins}% winner</span>
+                                        </div>
+                                        <div class="progress-bar bg-danger" style="width: ${losses}%">
+                                            <span class="progress-text">${losses}% loser</span>
+                                        </div>
+                                    </div>
+
+                                <h6> Tournaments </h6>
+                                <div class="row justify-content-center p-2">
+                                    <svg width="50" height="50" viewBox="0 0 250 250" class="circular-progress">
+                                        <circle cx="125" cy="125" r="100" class="bg"></circle>
+                                        <circle cx="125" cy="125" r="100" class="fg"></circle>
+                                        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" id="progress-text" style="font-size: 100px; fill:white;">${twins}</text>
+                                    </svg>
+                                    <p id="winwin">won this week</p>
+                                </div>
                             </div>
                         </div>
-
-                    <h6> Tournaments </h6>
-                    <div class="row justify-content-center p-2">
-
-                        <svg width="50" height="50" viewBox="0 0 250 250" class="circular-progress">
-                        <!-- Background Circle -->
-                        <circle cx="125" cy="125" r="100" class="bg"></circle>
-                        <!-- Foreground Circle -->
-                        <circle cx="125" cy="125" r="100" class="fg"></circle>
-                        <!-- Text Element -->
-                        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" id="progress-text" style="font-size: 100px; fill:white;">${twins}</text>
-                        </svg>
-                        <p id="winwin">won this week</p>
-                    </div>
-                    </div>
-            </div>
-                    <div class="row align-items-start" id="match_log" >
-                        <div class="col-1 p-3 p-title" id="log_title">
-                            Match history
-                        </div>
-                        <div class="col p-3 log-content justify-content-start" id="log_content">
+                        <div class="row align-items-start" id="match_log" >
+                            <div class="col-1 p-3 p-title" id="log_title">Match history</div>
+                            <div class="col p-3 log-content justify-content-start" id="log_content"></div>
                         </div>
                     </div>
-
-            </div>
-        </div>`;
+                </div>`;
         } catch (error) {
             return `<h1>${error}</h1>`;
         };

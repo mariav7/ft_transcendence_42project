@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
 
-#custom user model creation
 class UserProfileManager(UserManager):
     def create_user(self, email, username, password=None, profile_pic="users/profile_pic/default.png", otp_enabled=False, otp_verified=False):
         email = self.normalize_email(email)
@@ -16,7 +15,6 @@ class UserProfileManager(UserManager):
         user.is_staff = True
         user.save(using=self._db)
 
-# adding extra database fields to user 
 class User(AbstractUser):
     username = models.CharField(max_length=50, unique=True)
     bio = models.TextField(max_length=100, blank=True)
@@ -32,7 +30,6 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
-#FriendShip model that holds a friendship betweenh two user objects
 class Friendship(models.Model):
     sender = models.ForeignKey(
         User, related_name='sender', on_delete=models.CASCADE, null=True)

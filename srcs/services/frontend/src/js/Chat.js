@@ -20,7 +20,6 @@ export class Chat extends BaseClass {
         }
     }
 
-
     async notifyGame(targetId){
         const requestBody = {
             message: `@${this.profileData.username} invited you to a Pong Game ! Go to Dashboard to start playing !`,
@@ -138,7 +137,6 @@ export class Chat extends BaseClass {
 
         }.bind(this);
 
-        // document.querySelector('#chat-message-input').focus();
         document.querySelector('#chat-message-input').onkeyup = function (e) {
             if (e.keyCode == 13){
                 const messageInputDom = document.querySelector('#chat-message-input');
@@ -188,7 +186,6 @@ export class Chat extends BaseClass {
         const chatWindow = document.getElementById('chatWindow');
         chatWindow.innerHTML = '';
         
-        // Create a div for chat log
         const chatLog = document.createElement('div');
         chatLog.setAttribute('id', 'chatLog');
         chatLog.setAttribute('class', 'chatLog col');
@@ -314,7 +311,7 @@ export class Chat extends BaseClass {
                 link.innerText = ` ${friendUsername}`;
     
                 contentContainer.appendChild(messageButton);
-                contentContainer.appendChild(image); // Append image
+                contentContainer.appendChild(image);
                 contentContainer.appendChild(link);
                 divRow.appendChild(contentContainer);
                 friendListContainer.appendChild(divRow);
@@ -382,26 +379,26 @@ export class Chat extends BaseClass {
         await this.getUserData();
         this.displayFriendList();
         return `<div class="container">
-        <div class="row align-items-start">
-            <div class="col-2 p-3">
-                <h1 class="chat-title">Messages</i></h1>
-            </div>
+                    <div class="row align-items-start">
+                        <div class="col-2 p-3">
+                            <h1 class="chat-title">Messages</i></h1>
+                        </div>
 
-            <div class="col-4 mr-10">
-                <div class="row" id="friendList">
-                </div>
-            </div>
+                        <div class="col-4 mr-10">
+                            <div class="row" id="friendList"></div>
+                        </div>
 
-            <div class="col-6" id="conchasucolita">
-                <div class="row" id="chatHeader"></div>
-                <div class="row" id="chatWindow"></div>
-                <div class="row" id="chatInput"></div>
-                <div class="row" id="chatFooter">
-                    <div class="col text-start" id="blockUser"></div>
-                    <div class="col text-end" id="invitePong"></div>
-            </div>
-        </div>
-            `;
+                        <div class="col-6" id="conchasucolita">
+                            <div class="row" id="chatHeader"></div>
+                            <div class="row" id="chatWindow"></div>
+                            <div class="row" id="chatInput"></div>
+                            <div class="row" id="chatFooter">
+                                <div class="col text-start" id="blockUser"></div>
+                                <div class="col text-end" id="invitePong"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
     }
 
     cleanup() {

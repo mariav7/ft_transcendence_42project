@@ -104,14 +104,12 @@ export class Settings extends BaseClass {
         const bio = document.getElementById('newbio').value;
         const profile_pic = document.getElementById('newavatar');
     
-        // Check if any field has been modified
         const isModified = username.trim() !== '' || email.trim() !== '' || bio.trim() !== '' || this.isChecked != null || (profile_pic.files && profile_pic.files.length > 0);
         if (!isModified) {
             this.displayMessage("No changes detected. Form not submitted", false);
             return;
         }
 
-        // Prepare data object for JSON
         const jsonData = {};
         if (username.trim() !== '') {
             jsonData.username = username.trim();
@@ -133,7 +131,6 @@ export class Settings extends BaseClass {
         else
             //console.log('No file selected');
     
-        // Merge JSON and file data into FormData
         for (const [key, value] of Object.entries(jsonData)) {
             formData.append(key, value);
         }

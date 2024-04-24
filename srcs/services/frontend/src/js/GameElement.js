@@ -30,13 +30,10 @@ const createPaddle = ( className, user ) => {
     // //console.log('createPaddle call()');
     const paddle = document.createElement('div');
     paddle.setAttribute('id', `paddle-${user.id}`);
-    /*Setting element class name*/
     paddle.className = `${className}-paddle`;
-    /*Getting size for data user*/
     const { size_x , size_y} = user;
     const width = 100 * size_x;
     const height = 100 * size_y
-    /*Setting size with calc()*/
     paddle.style.setProperty("width", `calc(${width}%)`);
     paddle.style.setProperty("height", `calc(${height}%)`);
     const { top, left } = user;
@@ -47,19 +44,14 @@ const createPaddle = ( className, user ) => {
 
 const createBall = ( id, ball_data ) => {
     // //console.log('createBall call()');
-    /*Setting id for ball */
 	const ball = document.createElement('div');
     ball.setAttribute('id', id);
-    /*Setting width and height*/
     const { size_x , size_y} = ball_data;
-    /*Setting size with calc()*/
     ball.style.setProperty("width", `calc(${size_x* 100}%)`);
     ball.style.setProperty("height", `calc(${size_y * 100}%)`);
-    /*Setting position */
     const { top, left }  = ball_data;
     ball.style.setProperty("top", `calc(${top * 100}%)`);
     ball.style.setProperty("left", `calc(${left * 100}%)`);
-    /*Adding ball effect*/
     const ballEffect = document.createElement('div');
     ballEffect.className = 'ball_effect';
     ball.appendChild(ballEffect);

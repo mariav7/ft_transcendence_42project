@@ -2,23 +2,18 @@ SRCS_PATH = ./srcs/
 CLI_PATH = cli/cli.py
 COMPOSE_FILE = docker-compose.yml
 CLI = $(addprefix $(SRCS_PATH), $(CLI_PATH))
-CERTS = ./srcs/services/backend/selfsigned.crt ./srcs/services/backend/selfsigned.key \
-		./srcs/services/frontend/selfsigned.crt ./srcs/services/frontend/selfsigned.key
 
-# Load variables from .env file
 include .env
 export
 
 all:
 	@echo "Launching ft_transcendence ..."
-	@docker compose -f $(COMPOSE_FILE) up --build -d
+	@docker compose -f $(COMPOSE_FILE) up --build
 
-# Start services in the foreground
 up:
 	@echo "Start service of ft_transcendence in the foreground ..."
 	@docker compose -f $(COMPOSE_FILE) up --build
 
-# Start services in the background
 up-detached:
 	@echo "Start service of ft_transcendence in the background ..."
 	@docker compose -f $(COMPOSE_FILE) up -d
@@ -27,12 +22,10 @@ build-no-cache:
 	@echo "Build ft_transcendence with no cache ..."
 	@docker compose -f $(COMPOSE_FILE) build --no-cache
 
-# Stop services
 stop:
 	@echo "Stopping ft_transcendence ..."
 	@docker compose -f $(COMPOSE_FILE) stop
 
-# Stop and remove containers, networks, volumes, and images created by 'up'
 down:
 	@echo "Stopping and removing containers, networks, volumes in ft_transcendence ..."
 	@docker compose -f $(COMPOSE_FILE) down
@@ -74,7 +67,6 @@ clean: remove_certs
 fclean : remove_certs remove_containers remove_images
 	@echo "ft_transcendence cleaned $(GREEN)\t\t[ ✔ ]$(RESET)"
 
-# Prune system - removes stopped containers, unused networks, dangling images, and build cache
 prune:
 	@echo "$(YELLOW)\n Pruning all docker environment... \n$(RESET)"
 	docker system prune -a -f 
@@ -106,7 +98,7 @@ logs:
 		echo "\n$(BOLD)$(RED)No Docker containers found.$(RESET)\n"; \
 	fi
 
-.PHONY: all up up-detached build-no-cache stop down debug prune re clean fclean
+.PHONY: all up up-detached build-no-cache stop down debug remove_images remove_containers remove_certs prune re clean fclean exec cli status logs
 
 # COLORS
 RESET = \033[0m

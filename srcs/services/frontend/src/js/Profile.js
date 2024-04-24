@@ -366,23 +366,16 @@ export class Profile extends BaseClass {
                         <div class="col-4" id="leftCol">
                             <div class="row justify-content-center" id="username"><h1>${currentUser.username}</h1></div>
                             <div class="btn-group dropstart">
-                                    
-                                    <img src="${currentUser.getProfilePicPath()}" id="pic" class="avatar img-fluid" alt="Profile Image">
-                                    <span class="" id="status">
-                                    </span>
+                                <img src="${currentUser.getProfilePicPath()}" id="pic" class="avatar img-fluid" alt="Profile Image">
+                                <span class="" id="status">
+                                </span>
                             </div>
-                            
-                        
                             <div class="row justify-content-center" id="nb">${currentUser.id}</div>
                             <div class="row justify-content-center" id="email">${currentUser.email}</div>
                             <div class="row justify-content-center" id="bio">${currentUser.bio}</div>
-                        
-                        
-                            
                         </div>
 
                         <div class="col" id="right-col">
-                            
                             <div class="row" id="wins_losses">
                                 <div class="col-1 p-3 mb-3 p-title" id="stats_title">
                                     Stats
@@ -400,44 +393,27 @@ export class Profile extends BaseClass {
 
                                     <h6> Tournaments </h6>
                                     <div class="row justify-content-center p-2">
-
-                                            <svg width="50" height="50" viewBox="0 0 250 250" class="circular-progress">
-                                                <!-- Background Circle -->
-                                                <circle cx="125" cy="125" r="100" class="bg"></circle>
-                                                
-                                                <!-- Foreground Circle -->
-                                                <circle cx="125" cy="125" r="100" class="fg"></circle>
-                                                
-                                                <!-- Text Element -->
-                                                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" id="progress-text" style="font-size: 100px; fill:white;">${twins}</text>
-                                            </svg>
-
-                                            <p id="winwin">won this week</p>
-
+                                        <svg width="50" height="50" viewBox="0 0 250 250" class="circular-progress">
+                                            <circle cx="125" cy="125" r="100" class="bg"></circle>
+                                            <circle cx="125" cy="125" r="100" class="fg"></circle>
+                                            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" id="progress-text" style="font-size: 100px; fill:white;">${twins}</text>
+                                        </svg>
+                                        <p id="winwin">won this week</p>
                                     </div>
-
-                                        
                                 </div>
-                                
                             </div>
 
-
-                            <div class="row align-items-start" id="match_log" >
-                                <div class="col-1 p-3 p-title" id="log_title">
-                                    Match history
-                                </div>
-                                <div class="col p-3 log-content justify-content-start" id="log_content">
-                                </div>
+                            <div class="row align-items-start" id="match_log">
+                                <div class="col-1 p-3 p-title" id="log_title">Match history</div>
+                                <div class="col p-3 log-content justify-content-start" id="log_content"></div>
                             </div>
 
                         </div>
 
                         <div class="col-3 p-4">
-                        <div class="row">
+                            <div class="row">
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                                    <button class="btn btn-dark btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                        Friends
-                                    </button>
+                                    <button class="btn btn-dark btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Friends</button>
                                 </div>
                                 <div class="collapse" id="collapseExample">
                                     <div class="card friend-body" id="friendList"></div>
@@ -447,5 +423,4 @@ export class Profile extends BaseClass {
                     </div>
                 </div>`;
     }
-    
 }

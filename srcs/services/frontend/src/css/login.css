@@ -1,17 +1,14 @@
 #qrCode {
-    max-width: 100%; /* Ensure the image doesn't exceed the width of its parent */
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Ensure the image behaves as a block element */
+    max-width: 100%;
+    height: auto;
+    display: block;
     margin: 0 auto;
     padding: 0;
-    /* display: block; */
-    /* max-width: 60%;
-    height: auto; */
 }
 
 .titreTwofa {
-    writing-mode: vertical-lr; /* Rotate the text vertically from left to right */
-    transform: rotate(180deg); /* Additional rotation to make it display bottom to top */
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
     float: right;
-    white-space: nowrap; /* Prevent line breaks */
+    white-space: nowrap;
 }

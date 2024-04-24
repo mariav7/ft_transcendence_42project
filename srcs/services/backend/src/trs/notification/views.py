@@ -1,8 +1,3 @@
-from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
-from rest_framework.generics import ListCreateAPIView
-from rest_framework.permissions import IsAuthenticated
-from django.db import models
 from users.models import User
 from rest_framework.views import APIView
 from rest_framework.response import Response

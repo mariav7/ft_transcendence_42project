@@ -13,12 +13,11 @@ def notification_created(sender, instance, created, **kwargs):
         sender = instance.sender
         recipient = instance.recipient
         group_name = str(instance.recipient)
-        # # print("####INSTANCE.MESSAGE", instance.message, "from", sender, "to", group_name)
         channel_layer = get_channel_layer()
 
         message = {
-            'type': 'send_notification',  # Define the message type
+            'type': 'send_notification',
             'sender' : str(instance.sender),
-            'message': instance.message,        # Use instance.message as the message content
+            'message': instance.message,
         }
         async_to_sync(channel_layer.group_send)(group_name, message)

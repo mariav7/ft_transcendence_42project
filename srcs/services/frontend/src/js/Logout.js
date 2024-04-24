@@ -1,5 +1,5 @@
 import { BaseClass } from './BaseClass';
-import { onlineSocket, router } from './Router';
+import { onlineSocket } from './Router';
 
 export class Logout extends BaseClass{
     constructor() {
@@ -18,8 +18,6 @@ export class Logout extends BaseClass{
         sessionStorage.removeItem(token);
         localStorage.removeItem('sessionSocket');
         window.localStorage.clear();
-        // history.pushState({}, '', '/login');
-        // router();
     }
 
     getHtmlForMain() {

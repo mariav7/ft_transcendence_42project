@@ -11,7 +11,6 @@ export class MatchLobby extends BaseClass {
     
     async run()
     {
-        // await this.initWebSocketLobby();
         await this.postMatch();
     }
 
@@ -113,7 +112,6 @@ export class MatchLobby extends BaseClass {
         };
 
         this.socket.onerror = function(error) {
-            // this.showMessageAndRedirect('Tesssst')
             //console.log(error);
         };
     
@@ -122,14 +120,11 @@ export class MatchLobby extends BaseClass {
         };
     }
 
-
-    /*Method to get the HTML of the dashboard*/
     getHtmlForMain() {
         return `<div>
                     <p> Searching for opponent...</p>
                     <br>
                 </div>
-                <div class="spinner-border" role="status">
-                </div>`;
+                <div class="spinner-border" role="status"></div>`;
     }
 }

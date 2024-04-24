@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from .models import PublicRoom, Notification
 
-# Serializer to add a user to the public room to monitor online/offline status
 class PublicRoomSerializer(serializers.ModelSerializer):
     class Meta:
         model = PublicRoom

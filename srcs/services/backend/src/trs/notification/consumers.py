@@ -1,5 +1,4 @@
 import json, os, jwt
-from asgiref.sync import async_to_sync
 from channels.generic.websocket import AsyncWebsocketConsumer
 from django.contrib.auth import get_user_model
 from channels.db import database_sync_to_async
@@ -29,13 +28,10 @@ class NotificationConsumer(AsyncWebsocketConsumer):
     async def disconnect(self, close_code):
         user = self.scope.get("user")
         if user :
-            # print("DISCONNECTING ", user.username)
-            #On closing of a websockt, remove user from public channel 
             await self.channel_layer.group_discard(
                 self.group_name,
                 self.channel_name
             )
-            # remove user from database
             await sync_to_async(self.handle_user_disconnection)(user)
 
     async def send_notification(self, event):
@@ -59,9 +55,7 @@ class NotificationConsumer(AsyncWebsocketConsumer):
     def handle_user_connection(self, user):
         if not PublicRoom.objects.filter(user=user).exists():
             PublicRoom.objects.create(user=user)
-            # print("WELCOME @", user)
 
     def handle_user_disconnection(self, user):
-        # print("DELETING ", user.username)
         PublicRoom.objects.filter(user=user).delete()
         self.close()

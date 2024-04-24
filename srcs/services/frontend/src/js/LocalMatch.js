@@ -6,25 +6,17 @@ import { initGameTwoD, drawGameElements } from './GameElement';
 export class LocalMatch extends BaseClass {
     constructor(id) {
         super();
-        /*Id of the match*/
         this.id = id;
-        /*Socket*/
         this.socket = null;
-        /*URL of match*/
         this.url = window.location.href;
-
-        /*Getting token*/
         this.token = localStorage.getItem('token');
-
         this.addDocumentClickListener();
-        // this.insertCssLink();
         this.initWebSocket();
         this.user_1_info = null;
         this.user_2_info = null;
     }
 
     initWebSocket() {
-        // new WebSocket(`ws://localhost:8000/ws/chat/${targetId}/?token=${this.token}`);
         const wsProtocol = process.env.PROTOCOL === 'https' ? 'wss:' : 'ws:';
         const wsUrl = `${wsProtocol}//${this.host}:${this.backendPort}/ws/pong/localmatch/${this.id}/`;
     
@@ -74,7 +66,6 @@ export class LocalMatch extends BaseClass {
         };
     }
 
-    /*Methods for match handshake*/
     async ws_handshake(ws_handshake_message, data)
     {
         switch(ws_handshake_message)
@@ -94,7 +85,6 @@ export class LocalMatch extends BaseClass {
         }
     }
 
-    /*Methods to update the game state*/
     updateGameState(game_state_data)
     {
         const game_state = JSON.parse(game_state_data);
@@ -118,7 +108,6 @@ export class LocalMatch extends BaseClass {
         }
     }
 
-    /*Update the game elements */
     updateGameElement(game_element_data)
     {
         const game_element = JSON.parse(game_element_data);
@@ -134,7 +123,6 @@ export class LocalMatch extends BaseClass {
         }
     }
 
-    /*Method to get the HTML of the dashboard*/
     getHtmlForMain() {
         return ``;
     }
@@ -214,13 +202,10 @@ export class LocalMatch extends BaseClass {
 
         const appContainer = document.createElement('div');
 
-        /*Adding 'app-container' class to app div*/
         appContainer.classList.add('app-container');
-        /*Creating game header container for show user names and timer*/
         const game_header = document.createElement('header');
         game_header.classList.add('game-header');
         
-        /*Creating user names div*/
         const user1Div = document.createElement('div');
         user1Div.classList.add('user-info');
         user1Div.innerHTML = `
@@ -230,7 +215,6 @@ export class LocalMatch extends BaseClass {
         user2Div.classList.add('user-info');
         user2Div.innerHTML = `<span><span class="controls-info">↑</span><span class="controls-info">↓</span></span> ${user_2_info.username} `;
 
-        /*Creating timer*/
         const timerElement = document.createElement('div');
         timerElement.id = 'timer';
         timerElement.classList.add('timer');
@@ -246,24 +230,18 @@ export class LocalMatch extends BaseClass {
         score_2.className = `score`;
         score_2.innerHTML = `0`;
 
-
-        // Adding childs of game header
         game_header.appendChild(user1Div);
         game_header.appendChild(score_1);
         game_header.appendChild(timerElement);
         game_header.appendChild(score_2);
         game_header.appendChild(user2Div);
-        /*Addind header to appContainer */
         appContainer.appendChild(game_header);
 
-        /*Creating board game, parent of ball and paddles*/
         const board_game = document.createElement('div');
         board_game.setAttribute('id', 'board-game');
 
-        /*Adding board game to app div */
         appContainer.appendChild(board_game);
         
-        /*Adding all the app container*/
         app.appendChild(appContainer);
     }
 
@@ -285,7 +263,6 @@ export class LocalMatch extends BaseClass {
     }
 
     initKeyEvents = () => {
-        const jwtToken = localStorage.getItem('token');
         document.addEventListener('keydown', (e) => {
             if (this.socket.readyState === WebSocket.OPEN)
             {

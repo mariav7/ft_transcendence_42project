@@ -147,32 +147,27 @@ export class Dashboard extends BaseClass {
             history.pushState({}, '', `/localmatch/${match.id}`);
             router();
         } catch (error) {
-            // Handle error here
             console.error('Error creating match:', error);
         }
     }
 
-
     generateRandomName() {
-        const randomNumber = Math.floor(Math.random() * 1000); // Generate a random number between 0 and 999
+        const randomNumber = Math.floor(Math.random() * 1000);
         return `USER${randomNumber}`;
     }
 
     generateRandomPassword(length) {
-        const passwordLength = length || 8; // Default length is 8 characters
+        const passwordLength = length || 8;
         let password = '';
         for (let i = 0; i < passwordLength; i++) {
-            const digit = Math.floor(Math.random() * 10); // Generate a random digit (0-9)
+            const digit = Math.floor(Math.random() * 10);
             password += digit;
         }
         return password;
     }
-    
-
 
     async postLocalMatch() {
         //console.log("Posting that local match");
-        // const userData = await this.getUserData();
         const username = this.generateRandomName();
         //console.log(username);
         const password = this.generateRandomPassword();
@@ -188,7 +183,7 @@ export class Dashboard extends BaseClass {
             });
     
             if (!response.ok) {
-                let responseData = await response.text(); // Get response text
+                let responseData = await response.text();
                 const errorData = JSON.parse(responseData);
                 let formattedErrorMsg = '';
                 for (const [key, value] of Object.entries(errorData)) {
@@ -210,7 +205,6 @@ export class Dashboard extends BaseClass {
             console.error('ERROR : ', error);
         }
     }
-
 
     async postMatch() {
         const url = `${this.httpProtocol}://${this.host}:${this.backendPort}/pong/join_match/`;
@@ -238,37 +232,6 @@ export class Dashboard extends BaseClass {
             console.error('Error:', error);
             throw error;
         }
-    }
-
-    initWebSocketLobby() {
-        const wsProtocol = process.env.PROTOCOL === 'https' ? 'wss:' : 'ws:';
-        const wsUrl = `${wsProtocol}//${this.host}:${this.backendPort}/ws/pong/lobby`;
-
-        const socket = new WebSocket(wsUrl);
-
-        socket.onopen = function() {
-            //console.log('WebSocket(match lobby) connection established.');
-        };
-
-        socket.onmessage = (event) => {
-            const data = JSON.parse(event.data);
-            const { action, match_id } = data;
-            if (action == 'create_join') {
-                this.getHtmlForWaitingSpinner();
-            } else if (action == 'join_play') {
-                socket.close();
-                history.pushState('', '', `/match/${match_id}`);
-                router();
-            }
-        };
-
-        socket.onerror = function(error) {
-            console.error('WebSocket error:', error);
-        };
-    
-        socket.onclose = function() {
-            //console.log('WebSocket (match lobby) connection closed.');
-        };
     }
 
     displayMessage(message, flag) {
@@ -473,11 +436,6 @@ export class Dashboard extends BaseClass {
                     </div>
                 </div>`;
     };
-
-    // cleanup() {
-    //     super.cleanup();
-    //     // document.getElementById('app').removeEventListener('click', this.handleDocumentClickBound);
-    // }
 
     getHtmlForWaitingSpinner() {
         document.getElementById('app').innerHTML =  `<div class="spinner-border" role="status">

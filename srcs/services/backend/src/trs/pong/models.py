@@ -3,7 +3,6 @@ from django.db import models
 from django.utils import timezone
 from django.core.validators import MaxValueValidator
 from django.core.serializers import serialize
-# Own imports
 from users.models import User
 
 class Tournament(models.Model):
@@ -29,29 +28,23 @@ class Tournament(models.Model):
         user_points_against = {}
         user_match_durations = {}
         for match in matches:
-            # Check winner and loser of the match
             winner = match.user_1 if match.score_user_1 > match.score_user_2 else match.user_2
             loser = match.user_2 if match.score_user_1 > match.score_user_2 else match.user_1
             winner_score = match.score_user_1 if match.score_user_1 > match.score_user_2 else match.score_user_2
             loser_score = match.score_user_2 if match.score_user_1 > match.score_user_2 else match.score_user_1
-            # Update TOTAL POINTS FOR user
             user_points[winner] = user_points[winner] + winner_score if winner in user_points else winner_score
             user_points[loser] = user_points[loser] + loser_score if loser in user_points else loser_score
 
-            # Update TOTAL POINTS AGAINST USER
             user_points_against[loser] = user_points_against[loser] + winner_score if loser in user_points_against else winner_score
             user_points_against[winner] = user_points_against[winner] + loser_score if winner in user_points_against else loser_score
 
-            # Calculate match duration for winner
             if winner in user_match_durations:
                 user_match_durations[winner].append(match.time_elapsed)
             else:
                 user_match_durations[winner] = [match.time_elapsed]
 
-        # Sort users by their total points, then by least loser points, then by least total duration
         sorted_users = sorted(user_points.items(), key=lambda x: (x[1], user_points_against.get(x[0], 0), -sum(user_match_durations.get(x[0], []))), reverse=True)
 
-        # Calculate leaderboard
         leaderboard = []
         for rank, (user, points) in enumerate(sorted_users, start=1):
             user_durations = user_match_durations.get(user, []) 

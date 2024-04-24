@@ -1,10 +1,8 @@
 .settings-tooltip {
     background-color: #7000ff !important;
-    /* --bs-tooltip-color: var(--bs-white) !important; */
 }
 
 #qrCode {
-    /* display: block; */
     max-width: 40%;
     height: auto;
 }

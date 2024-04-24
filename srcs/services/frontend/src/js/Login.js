@@ -1,13 +1,10 @@
 import { BaseClass } from './BaseClass';
-import jwt_decode from 'jwt-decode';
 import { connectUser, router } from './Router';
 
 export class Login extends BaseClass {
     constructor() {
         super();
         this.addDocumentClickListener();
-        // this.handleDocumentClickBound = this.handleDocumentClick.bind(this);
-        // document.getElementById('app').addEventListener('click', this.handleDocumentClickBound);
     }
 
     async verifyCode(codeTwoFa) {
@@ -133,7 +130,6 @@ export class Login extends BaseClass {
                 } else {
                     // //console.log("Invalid Credentials");
                     this.displayMessage("Invalid Credentials", false);
-                    // Handle invalid credentials
                 }
             } else {
                 console.error('Error:', response.statusText);

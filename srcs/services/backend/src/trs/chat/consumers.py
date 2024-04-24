@@ -2,13 +2,10 @@ import json, os, jwt
 from channels.generic.websocket import AsyncWebsocketConsumer
 from django.contrib.auth import get_user_model
 from channels.db import database_sync_to_async
-from asgiref.sync import sync_to_async
 from urllib.parse import parse_qs
 from users.models import User
 from chat.models import Message, BlackList
 from chat.serializers import CustomSerializer
-from rest_framework import status
-from rest_framework.response import Response
 from django.utils.html import escape
 from django.utils import timezone
 
@@ -33,7 +30,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
             unread_messages = await self.get_unread_messages(target)
             for message in unread_messages:
-                # print("UNREAD MESSAGE:", message)
                 await self.send_unread_msg(message)
                 await self.mark_msg_as_read(message)
 
@@ -66,7 +62,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
         if token:
             user = await self.get_user_from_token(token)
             if user:
-                # print("RECEIVING", data)
                 message = escape(data['message'])
                 receiver_id = user.username
                 sender = await self.get_user(receiver_id.replace('"', ''))
@@ -84,7 +79,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
                     )
                     return
                 await self.save_message(sender=sender, message=message, thread_name=self.room_group_name)
-                # find the queued messages in the db
                 messages = await self.get_messages()
                 await self.channel_layer.group_send(
                     self.room_group_name,
@@ -102,7 +96,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
             timestamp = timezone.now()
             formatted_timestamp = timestamp.strftime('%Y-%m-%d %H:%M:%S')
 
-            # Send the message to the connected client
             await self.send(
                 text_data=json.dumps(
                     {

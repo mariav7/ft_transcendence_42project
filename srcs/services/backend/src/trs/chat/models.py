@@ -3,13 +3,9 @@ from users.models import User
 from django.utils import timezone
 
 class Message(models.Model):
-    # User that sends a message
     sender = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    # Chat content
     message = models.TextField(null=True, blank=True)
-    # Name of the private room (easier to filter which message to return)
     thread_name = models.CharField(null=True, blank=True, max_length=200)
-    # Creation time of the message sent
     timestamp = models.DateTimeField(default=timezone.now)
     is_read = models.BooleanField(default=False)
 

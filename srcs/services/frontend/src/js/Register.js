@@ -50,13 +50,13 @@ export class Register extends BaseClass
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRFToken': this.getCookie('csrftoken'), // Include CSRF token
+                    'X-CSRFToken': this.getCookie('csrftoken'),
                 },
                 body: JSON.stringify({ username, email, password }),
             });
     
             if (!response.ok) {
-                let responseData = await response.text(); // Get response text
+                let responseData = await response.text();
                 const errorData = JSON.parse(responseData);
                 let formattedErrorMsg = '';
                 for (const [key, value] of Object.entries(errorData)) {

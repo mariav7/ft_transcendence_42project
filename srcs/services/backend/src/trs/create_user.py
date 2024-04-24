@@ -1,4 +1,3 @@
-
 import os
 import django
 from django.shortcuts import get_object_or_404
@@ -9,7 +8,6 @@ django.setup()
 
 from users.models import User
 
-# Get the custom user model
 def create_regular_user():
     username = os.getenv("ADMIN")
     try :

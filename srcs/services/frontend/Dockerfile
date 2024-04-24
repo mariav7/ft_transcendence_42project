@@ -12,7 +12,5 @@ RUN npm install --save
 COPY ./src ./src
 
 EXPOSE ${FRONTEND_PORT}
-# EXPOSE 5173
 
-# Running entry point starting server
 CMD ["npm", "run", "dev"]
