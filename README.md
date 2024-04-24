@@ -68,7 +68,7 @@ cd ft_transcendence_42project
 ```
 
 > [!WARNING]  
-> You must create a .env file at the root of the project
+> You must create an .env file at the root of the project
 
 **Example of an .env file:**
 ```
