@@ -1,9 +1,9 @@
 <div align="center">
 
-<!-- ![Demo:](misc/demo.gif) -->
+![Demo:](misc/demo.gif)
 
 ---
-Coded with ~~blood and tears~~ love by: [mflores-](https://github.com/mariav7), [dnieto-c](https://github.com/DanielAlejandro2605) and lo-jo
+Coded with ~~blood and tears~~ love by: [mflores-](https://github.com/mariav7), [dnieto-c](https://github.com/DanielAlejandro2605) and [lo-jo](https://github.com/lo-jo)
 
 </div>
 
